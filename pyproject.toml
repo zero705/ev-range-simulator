@@ -48,6 +48,7 @@ dev = [
 
 [project.urls]
 Homepage = "https://github.com/zero705/ev-range-simulator"
+App = "https://ev-range-simulator.streamlit.app"
 Documentation = "https://github.com/zero705/ev-range-simulator/blob/main/docs/method.md"
 Issues = "https://github.com/zero705/ev-range-simulator/issues"
 Changelog = "https://github.com/zero705/ev-range-simulator/blob/main/CHANGELOG.md"

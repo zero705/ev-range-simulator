@@ -1,5 +1,6 @@
 # EV Range Simulator
 
+[![Open the app](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://ev-range-simulator.streamlit.app)
 [![CI](https://github.com/zero705/ev-range-simulator/actions/workflows/ci.yml/badge.svg)](https://github.com/zero705/ev-range-simulator/actions/workflows/ci.yml)
 ![Python](https://img.shields.io/badge/python-3.10%2B-3776AB)
 ![License](https://img.shields.io/badge/license-MIT-green)
@@ -13,8 +14,8 @@ and Volkswagen ID.4 Pro**, with a physics model built only from official measure
 regulatory definitions. Each car's drivetrain is identified from its US EPA certification test,
 then checked, without any further tuning, against the EU type-approval (WLTP) figures and,
 where the EPA reports contain them, against EPA tests the identification never saw. A
-Streamlit app lets you drive the cars through the standard test cycles or at a steady speed,
-with extra load and climate control.
+[Streamlit app](https://ev-range-simulator.streamlit.app) lets you drive the cars through the
+standard test cycles or at a steady speed, with extra load and climate control.
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="docs/images/breakdown-dark.png">
@@ -96,6 +97,8 @@ speed. The cars tab lists every input the model uses for each car, with its sour
 to the car's EPA certificate; the validation tab lists every comparison with official data; and
 the climate-control panel shows the heating and cooling power Argonne National Laboratory
 measured on two cars at a standstill.
+
+The app runs at <https://ev-range-simulator.streamlit.app>. To run it on your own computer:
 
 ```bash
 git clone https://github.com/zero705/ev-range-simulator.git
