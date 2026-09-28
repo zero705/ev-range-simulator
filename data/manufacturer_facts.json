@@ -1,0 +1,107 @@
+{
+  "about": "Manufacturer figures shown to users. Each fact carries a verbatim quote from its source document; tools/verify_manufacturer.py checks that every quote and value really appears in that document and that the document is the one fingerprinted here. The documents themselves are copyrighted and are not redistributed: download them from the URLs below into data/sources/ to re-run the check.",
+  "documents": {
+    "volvo-price-spec": {
+      "title": "Price and Specification, Model Year 2025, October 2024, VOLVO EX30 (Irish market)",
+      "publisher": "Volvo Car Corporation",
+      "url": "https://www.volvocars.com/images/cs/v3/assets/blt84e01a6904dbd2e8/bltdc4437137eec679e/681332dd924f57737f7a3d4b/EX30_Model_Year_25.5.pdf",
+      "file": "volvo_ex30_price_spec_my25_2024-10.pdf",
+      "sha256": "32c39956ceb3b799cbf7c07511c008e9c613ca1772a1fe0f5714ca3e51980c9a",
+      "note": "Technical table columns, in order: Single Motor, Single Motor Extended Range, Twin Motor Performance."
+    },
+    "volvo-brochure": {
+      "title": "Volvo EX30 brochure, 3 November 2025 (Thai market, bilingual specifications for EX30 Ultra Single Motor Extended Range)",
+      "publisher": "Volvo Car Corporation",
+      "url": "https://www.volvocars.com/files/cs/v3/assets/blt84e01a6904dbd2e8/bltf1b84ccd41679d6c/691c1573b07a443ac1f9c0a9/R1_Volvo_EX30_brochure_20251103.pdf",
+      "file": "volvo_ex30_brochure_2025-11-03.pdf",
+      "sha256": "e670e609d2eabe64a446b343c9816dbb9f0e69d9043f4bedb952d78fbd4595c7"
+    },
+    "volvo-press-2024": {
+      "title": "The fully electric Volvo EX30 named 2024 World Urban Car (press release)",
+      "publisher": "Volvo Car Corporation",
+      "url": "https://www.media.volvocars.com/us/en-us/media/pressreleases/325577/the-fully-electric-volvo-ex30-named-2024-world-urban-car",
+      "file": "volvo_ex30_press_world_urban_car_2024.pdf",
+      "sha256": "e284cb6181730cd69846bcdf0fda48723c83bb4aa2a719997216d2a5534aad2a"
+    },
+    "polestar-lca": {
+      "title": "Life cycle assessment - Carbon footprint report, Polestar 2 model years 2023-2025 (final, 19 November 2024), Tables 9 and 10, page 14",
+      "publisher": "Polestar Performance AB",
+      "url": "https://www.polestar.com/dato-assets/11286/1732276748-polestar-2_lca_report_my23-my25_final_2024-11-19.pdf",
+      "file": "polestar2_lca_my23-my25_2024-11-19.pdf",
+      "sha256": "ccfbe6ad33c73a41784c80ce1cbae1cd733c353abe8bc67cf1776171d03a2959",
+      "note": "Table columns, in order: Long range Dual motor, Long range Single motor, Standard range Single motor (all MY24)."
+    },
+    "tesla-uk-2024": {
+      "title": "Tesla UK, Model 3 page, as archived by the Internet Archive on 14 July 2024",
+      "publisher": "Tesla, Inc.",
+      "url": "https://web.archive.org/web/20240714111055/https://www.tesla.com/en_gb/model3",
+      "file": "tesla_model3_gb_archive_2024-07-14.html",
+      "sha256": "9690d9bcf655abf527f6b1c9373eb99cf488188e46df69bc1605d97f3a822360"
+    },
+    "vw-high-efficiency-drive": {
+      "title": "Volkswagen Newsroom, 'The new high-efficiency drive - all the details', 10 November 2023, as archived on 6 March 2026",
+      "publisher": "Volkswagen AG",
+      "url": "https://web.archive.org/web/20260306025014/https://www.volkswagen-newsroom.com/en/the-new-id4-and-id5-17756/the-new-high-efficiency-drive-all-the-details-17757",
+      "file": "vw_id4_high_efficiency_drive_archive_2026-03-06.html",
+      "sha256": "97361345b1a1a6777c774592ea10398b123db0d2399fc3f0231cd72b2f2f1c11"
+    },
+    "vw-world-premiere-2020": {
+      "title": "Volkswagen Newsroom, 'The new Volkswagen ID.4 - World premiere of the fully electrically driven SUV', 23 September 2020",
+      "publisher": "Volkswagen AG",
+      "url": "https://www.volkswagen-newsroom.com/en/press-releases/the-new-volkswagen-id4-world-premiere-of-the-fully-electrically-driven-suv-6446",
+      "file": "vw_id4_world_premiere_2020-09-23.html",
+      "sha256": "d6cc127ff9a514359b5338a3bf90a5c7ee21e7940778d61c0988bf540744bac4"
+    },
+    "vw-exterior-2020": {
+      "title": "Volkswagen Newsroom, 'As if shaped by the wind itself: The exterior design of the new ID.4', 27 August 2020",
+      "publisher": "Volkswagen AG",
+      "url": "https://www.volkswagen-newsroom.com/en/press-releases/as-if-shaped-by-the-wind-itself-the-exterior-design-of-the-new-id4-6346",
+      "file": "vw_id4_exterior_design_2020-08-27.html",
+      "sha256": "5f99fc331545e91bf5af1df2cc47d99bbe339c1eb5285a802b67abb453d19da1"
+    }
+  },
+  "vehicles": {
+    "volvo-ex30-sm-er": [
+      {"item": "table_column_order", "value": "Single Motor Extended Range", "doc": "volvo-price-spec", "quote": "TECHNICAL DETAILS* ELECTRIC Single Motor Single Motor Extended Range Twin Motor Performance Driveline Rear Wheel Drive Rear Wheel Drive All Wheel Drive"},
+      {"item": "battery_energy_nominal_kwh", "value": "69", "doc": "volvo-price-spec", "quote": "Battery Size - nominal, kWh 51 69 69"},
+      {"item": "battery_energy_usable_kwh", "value": "65", "doc": "volvo-price-spec", "quote": "Battery Size - usable, kWh 49 65 65"},
+      {"item": "battery_energy_nominal_kwh", "value": "69", "doc": "volvo-brochure", "quote": "Battery Capacity (kWh) 69"},
+      {"item": "battery_energy_usable_kwh", "value": "65", "doc": "volvo-brochure", "quote": "Usable capacity (kWh) 65"},
+      {"item": "battery_energy_nominal_kwh", "value": "69", "doc": "volvo-press-2024", "quote": "a Single Motor Extended Range with battery capacity increased to 69kWh"},
+      {"item": "motor_power_kw", "value": "200", "doc": "volvo-price-spec", "quote": "Max. output ECE, hp/kw 272 / 200 272 / 200 428 / 315"},
+      {"item": "drive", "value": "Rear Wheel Drive", "doc": "volvo-price-spec", "quote": "Driveline Rear Wheel Drive Rear Wheel Drive All Wheel Drive"},
+      {"item": "wltp_consumption_kwh_per_100km", "value": "17.0", "doc": "volvo-price-spec", "quote": "Electric Consumption, (kWh/100km) 17.1 17.0 17.5"},
+      {"item": "wltp_range_up_to_km", "value": "476", "doc": "volvo-price-spec", "quote": "Electric Range, (km) up to (337) up to (476) up to (450)"},
+      {"item": "mass_in_running_order_kg", "value": "1,850", "doc": "volvo-price-spec", "quote": "Running order, kg 1,840 1,850 1,960"},
+      {"item": "minimum_kerb_weight_kg", "value": "1,775", "doc": "volvo-price-spec", "quote": "Min. kerb weight, kg 1,765 1,775 1,885"},
+      {"item": "maximum_total_weight_kg", "value": "2,235", "doc": "volvo-price-spec", "quote": "Max. total weight, kg 2,210 2,235 2,335"},
+      {"item": "standard_wheels", "value": "245/45", "doc": "volvo-price-spec", "quote": "19\" 5 Spoke Alloy Wheels (Diamond Cut) with 245/45 Summer Tyres (Single Motor Extended Range and Twin Motor Performance only)"}
+    ],
+    "polestar-2-lr-sm": [
+      {"item": "table_column_order", "value": "Long range Single motor", "doc": "polestar-lca", "quote": "Polestar 2 MY24 Long range Dual motor Long range Single motor Standard range Single motor Battery capacity 82 kWh 82 kWh 69 kWh"},
+      {"item": "battery_energy_kwh", "value": "82 kWh", "doc": "polestar-lca", "quote": "Battery capacity 82 kWh 82 kWh 69 kWh", "note": "Polestar states 'battery capacity' without saying whether it is gross or usable."},
+      {"item": "motor_power_kw", "value": "220 kW", "doc": "polestar-lca", "quote": "Output 310 kW 421 hp 740 Nm 220 kW 299 hp 490 Nm 200 kW 272 hp 490 Nm"},
+      {"item": "wltp_consumption_kwh_per_100km", "value": "14.8-15.8", "doc": "polestar-lca", "quote": "Preliminary consumption (WL TP) 15.9-17.2 kWh/ 100 km 14.8-15.8 kWh/ 100 km 14.9-15.9 kWh/ 100 km"},
+      {"item": "wltp_range_km", "value": "610-655", "doc": "polestar-lca", "quote": "Preliminary range (WL TP) 555-593 km 610-655 km 505-546 km"},
+      {"item": "total_weight_kg", "value": "2009", "doc": "polestar-lca", "quote": "T otal weight (kg) 2108 2009 1944"}
+    ],
+    "tesla-model3-rwd": [
+      {"item": "range_wltp_mi", "value": "318 mi", "doc": "tesla-uk-2024", "quote": "Battery Standard Range Range (WLTP) 318 mi Acceleration 5.8 s 0-60 mph Drive Rear-Wheel Drive Dimensions Weight (Curb Mass) 1,765 kg"},
+      {"item": "curb_mass_kg", "value": "1,765 kg", "doc": "tesla-uk-2024", "quote": "Drive Rear-Wheel Drive Dimensions Weight (Curb Mass) 1,765 kg"},
+      {"item": "wheels", "value": "18\" or 19\"", "doc": "tesla-uk-2024", "quote": "Weight (Curb Mass) 1,765 kg Cargo 682 litres Wheels 18\" or 19\""},
+      {"item": "official_consumption_kwh_per_100km", "value": "13.2", "doc": "tesla-uk-2024", "quote": "Official Power Consumption 13.2 kWh/100km CO2 Emissions 0 g/km CO2 efficiency class A+ See Details Charging Supercharging Max/Payment Type 170 kW Max"},
+      {"item": "battery_energy_kwh", "value": null, "doc": "tesla-uk-2024", "quote": null, "absent_pattern": "kWh(?!\\s*/)", "note": "Tesla does not publish battery capacity: the page lists range, acceleration, drive, curb mass, wheels, dimensions and consumption; every 'kWh' on it is a consumption unit (kWh/100 km), never an energy."}
+    ],
+    "vw-id4-pro": [
+      {"item": "battery_energy_net_kwh", "value": "77 kWh", "doc": "vw-high-efficiency-drive", "quote": "all ID.4 and ID.5 models with 77 kWh battery (net)"},
+      {"item": "motor_power_kw", "value": "210 kW", "doc": "vw-high-efficiency-drive", "quote": "An electric drive motor with 210 kW (286 PS) is now used in the rear-wheel-drive models ID.4 Pro and ID.5 Pro"},
+      {"item": "wltp_range_km", "value": "550", "doc": "vw-high-efficiency-drive", "quote": "the new ID.4 Pro can now cover a distance of 550 kilometres (WLTP combined)"},
+      {"item": "drag_coefficient", "value": "0.28", "doc": "vw-world-premiere-2020", "quote": "guarantees very good aerodynamics with a drag coefficient of 0.28"},
+      {"item": "drag_coefficient", "value": "0.28", "doc": "vw-exterior-2020", "quote": "The ID.4 achieves an excellent drag coefficient of 0.28"}
+    ]
+  },
+  "not_published": [
+    "Tesla Model 3: battery energy (see the note above).",
+    "Volvo EX30, Polestar 2, Tesla Model 3: drag coefficient. None of the manufacturer documents found states it; the model does not need it, because it uses the measured road load."
+  ]
+}

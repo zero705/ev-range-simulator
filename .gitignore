@@ -1,0 +1,36 @@
+# Source documents (manufacturer documents, EPA certificate reports, papers, regulations) are
+# fingerprinted in data/*.json with their URLs and are downloaded to re-run the checks; several
+# are copyrighted, so none are committed
+data/sources/
+
+# Virtual environments
+.venv/
+venv/
+
+# Python build and cache files
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+
+# Tool caches and reports
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+coverage.xml
+htmlcov/
+
+# Downloaded raw data (EPA test car lists, EEA extracts, regulations)
+*.xlsx
+*.pdf
+
+# Editors and OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Streamlit secrets (the app uses none; never commit any)
+.streamlit/secrets.toml

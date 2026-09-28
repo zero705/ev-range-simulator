@@ -1,0 +1,90 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ev-range-simulator"
+version = "0.1.0"
+description = "Energy consumption and range of four electric cars on standard drive cycles, calibrated on EPA certification data and checked against the EU WLTP figures."
+readme = "README.md"
+requires-python = ">=3.10"
+license = "MIT"
+license-files = ["LICENSE"]
+authors = [{ name = "Ömer Faruk Şenol" }]
+keywords = ["electric-vehicle", "range", "energy-consumption", "wltp", "epa", "drive-cycle", "simulation"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Education",
+    "Intended Audience :: Science/Research",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+    "Topic :: Scientific/Engineering",
+    "Typing :: Typed",
+]
+dependencies = ["numpy>=1.23"]
+
+[project.optional-dependencies]
+app = ["streamlit>=1.51", "altair>=5", "pandas>=2"]
+plot = ["matplotlib>=3.8"]
+# The scripts in tools/ that read the source documents (PDF and spreadsheet files).
+# With defusedxml installed, openpyxl parses spreadsheets safely against XML attacks.
+tools = ["pypdf>=4", "openpyxl>=3.1", "defusedxml>=0.7"]
+dev = [
+    "pytest>=8",
+    "pytest-cov>=5",
+    "ruff>=0.6",
+    "mypy>=1.11",
+    "matplotlib>=3.8",
+    "streamlit>=1.51",
+    "altair>=5",
+    "pandas>=2",
+    "pandas-stubs>=2",
+    "pypdf>=4",
+    "openpyxl>=3.1",
+    "defusedxml>=0.7",
+    "types-openpyxl",
+]
+
+[project.urls]
+Homepage = "https://github.com/zero705/ev-range-simulator"
+Documentation = "https://github.com/zero705/ev-range-simulator/blob/main/docs/method.md"
+Issues = "https://github.com/zero705/ev-range-simulator/issues"
+Changelog = "https://github.com/zero705/ev-range-simulator/blob/main/CHANGELOG.md"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+evrange = ["py.typed"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
+addopts = "-q"
+
+[tool.coverage.run]
+branch = true
+source = ["evrange"]
+
+[tool.coverage.report]
+show_missing = true
+fail_under = 95
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+
+[tool.ruff.lint]
+# S: the flake8-bandit security checks.
+select = ["E", "W", "F", "I", "B", "UP", "N", "SIM", "RUF", "PL", "PT", "C4", "RET", "NPY", "S"]
+ignore = ["PLR0913", "PLR2004"]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/*" = ["PLR2004", "S101"]
+
+[tool.mypy]
+strict = true
+mypy_path = "src"
+files = ["src", "tests", "tools", "streamlit_app.py"]
+warn_unreachable = true

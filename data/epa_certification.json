@@ -1,0 +1,494 @@
+{
+  "about": "Battery-side (DC) and mains-side (AC) energy measured in the EPA certification test of each car, read from the EPA certificate summaries by tools/epa_certification.py. See docs/data-sources.md.",
+  "definitions": {
+    "usable_battery_energy_wh": "total DC energy discharged in the full-discharge test (40 CFR 600.116-12(a)(8))",
+    "dc_wh_per_mi": "DC energy per mile on the UDDS (weighted over the four UDDS of the Multi-Cycle Test) and on the highway cycle (mean of the two)",
+    "recharge": "AC energy taken from the mains to recharge after the test",
+    "charging_efficiency": "usable battery energy / recharge energy (computed here)",
+    "constant_65_mph_dc_wh_per_mi": "DC energy per mile in the constant-speed phases of the Multi-Cycle Test, driven at 65 mph (40 CFR 600.116-12(a)(5))"
+  },
+  "conversions": "1 mi = 1.609344 km (exact)",
+  "vehicles": [
+    {
+      "id": "tesla-model3-rwd",
+      "report": {
+        "publisher": "US Environmental Protection Agency",
+        "title": "Certificate Summary Information Report",
+        "test_group": "RTSLV00.0L13",
+        "certificate": "RTSLV00.0L13-006",
+        "issued": "12/18/2023",
+        "revision_submitted": "12/13/2023 05:04:41 PM",
+        "model_year": 2024,
+        "docid": 59856,
+        "url": "https://dis.epa.gov/otaqpub/display_file.jsp?docid=59856&flag=1",
+        "file": "epa_cert_RTSLV00.0L13_59856.pdf",
+        "sha256": "96c5872776de25db398efc3efce597eeac4c718fc21d53c8880da52b5a2460d1"
+      },
+      "label": "base",
+      "test_vehicle": {
+        "test_vehicle_id": "3R124-649670",
+        "configuration": 0,
+        "curb_weight_lb": 3891.0,
+        "equivalent_test_weight_lb": 4250.0,
+        "target_coefficients": {
+          "A_lbf": 27.02,
+          "B_lbf_per_mph": 0.2873,
+          "C_lbf_per_mph2": 0.0122
+        }
+      },
+      "tests": [
+        {
+          "number": "RTSL10083348",
+          "procedure": "81 - Charge Depleting UDDS",
+          "date": "11/14/2023",
+          "four_wheel_drive_dynamometer": true
+        },
+        {
+          "number": "RTSL10083349",
+          "procedure": "84 - Charge Depleting Highway",
+          "date": "11/14/2023",
+          "four_wheel_drive_dynamometer": true
+        }
+      ],
+      "usable_battery_energy_wh": 60997.0,
+      "dc_wh_per_mi": {
+        "udds": 149.6,
+        "hwfet": 167.7
+      },
+      "certified_range_mi": {
+        "udds": 408.0,
+        "hwfet": 364.0
+      },
+      "recharge": {
+        "mains_voltage_v": 208.0,
+        "energy_kwh": 68.879
+      },
+      "dc_wh_per_km": {
+        "udds": 92.96,
+        "hwfet": 104.2
+      },
+      "charging_efficiency": 0.8856,
+      "other_configurations": []
+    },
+    {
+      "id": "volvo-ex30-sm-er",
+      "report": {
+        "publisher": "US Environmental Protection Agency",
+        "title": "Certificate Summary Information Report",
+        "test_group": "SVVXV00.0Z0D",
+        "certificate": "SVVXV00.0Z0D-014",
+        "issued": "06/25/2024",
+        "revision_submitted": "06/25/2024 10:00:18 AM",
+        "model_year": 2025,
+        "docid": 63199,
+        "url": "https://dis.epa.gov/otaqpub/display_file.jsp?docid=63199&flag=1",
+        "file": "epa_cert_SVVXV00.0Z0D_63199.pdf",
+        "sha256": "84720bc1990767a4c6c36486c8879399be9ae15871bf5f08ff314a19371b08e4"
+      },
+      "label": "19 and 20 inch wheels",
+      "test_vehicle": {
+        "test_vehicle_id": "202532",
+        "configuration": 1,
+        "curb_weight_lb": 3982.0,
+        "equivalent_test_weight_lb": 4250.0,
+        "target_coefficients": {
+          "A_lbf": 33.2,
+          "B_lbf_per_mph": -0.0857,
+          "C_lbf_per_mph2": 0.02006
+        }
+      },
+      "tests": [
+        {
+          "number": "SVVX10086370",
+          "procedure": "77 - Multi-Cycle Test (MCT)",
+          "date": "05/09/2024",
+          "four_wheel_drive_dynamometer": true
+        }
+      ],
+      "usable_battery_energy_wh": 67198.7,
+      "dc_wh_per_mi": {
+        "udds": 165.56,
+        "hwfet": 201.16
+      },
+      "certified_range_mi": {
+        "udds": 405.883,
+        "hwfet": 334.064
+      },
+      "recharge": {
+        "mains_voltage_v": 233.0,
+        "energy_kwh": 75.559
+      },
+      "constant_65_mph_dc_wh_per_mi": [
+        262.36,
+        261.33
+      ],
+      "phases": [
+        {
+          "miles": 7.429,
+          "dc_kwh": 1.3933,
+          "reported_kwh_per_100mi": 18.755,
+          "kind": "udds"
+        },
+        {
+          "miles": 10.259,
+          "dc_kwh": 2.0921,
+          "reported_kwh_per_100mi": 20.393,
+          "kind": "hwfet"
+        },
+        {
+          "miles": 7.423,
+          "dc_kwh": 1.2474,
+          "reported_kwh_per_100mi": 16.805,
+          "kind": "udds"
+        },
+        {
+          "miles": 183.355,
+          "dc_kwh": 48.1046,
+          "reported_kwh_per_100mi": 26.236,
+          "kind": "constant_speed"
+        },
+        {
+          "miles": 7.421,
+          "dc_kwh": 1.2059,
+          "reported_kwh_per_100mi": 16.25,
+          "kind": "udds"
+        },
+        {
+          "miles": 10.259,
+          "dc_kwh": 2.0352,
+          "reported_kwh_per_100mi": 19.838,
+          "kind": "hwfet"
+        },
+        {
+          "miles": 7.443,
+          "dc_kwh": 1.2262,
+          "reported_kwh_per_100mi": 16.475,
+          "kind": "udds"
+        },
+        {
+          "miles": 37.86,
+          "dc_kwh": 9.894,
+          "reported_kwh_per_100mi": 26.133,
+          "kind": "constant_speed"
+        }
+      ],
+      "dc_wh_per_km": {
+        "udds": 102.87,
+        "hwfet": 125.0
+      },
+      "charging_efficiency": 0.8894,
+      "other_configurations": [
+        {
+          "label": "18 inch wheels",
+          "test_vehicle": {
+            "test_vehicle_id": "202532",
+            "configuration": 0,
+            "curb_weight_lb": 3982.0,
+            "equivalent_test_weight_lb": 4250.0,
+            "target_coefficients": {
+              "A_lbf": 33.96,
+              "B_lbf_per_mph": -0.0857,
+              "C_lbf_per_mph2": 0.02022
+            }
+          },
+          "tests": [
+            {
+              "number": "SVVX10086354",
+              "procedure": "77 - Multi-Cycle Test (MCT)",
+              "date": "05/16/2024",
+              "four_wheel_drive_dynamometer": true
+            }
+          ],
+          "usable_battery_energy_wh": 67158.8,
+          "dc_wh_per_mi": {
+            "udds": 169.09,
+            "hwfet": 204.19
+          },
+          "certified_range_mi": {
+            "udds": 397.177,
+            "hwfet": 328.91
+          },
+          "recharge": {
+            "mains_voltage_v": 232.0,
+            "energy_kwh": 75.443
+          },
+          "constant_65_mph_dc_wh_per_mi": [
+            265.62,
+            265.61
+          ],
+          "phases": [
+            {
+              "miles": 7.459,
+              "dc_kwh": 1.4196,
+              "reported_kwh_per_100mi": 19.032,
+              "kind": "udds"
+            },
+            {
+              "miles": 10.261,
+              "dc_kwh": 2.1323,
+              "reported_kwh_per_100mi": 20.781,
+              "kind": "hwfet"
+            },
+            {
+              "miles": 7.415,
+              "dc_kwh": 1.2867,
+              "reported_kwh_per_100mi": 17.353,
+              "kind": "udds"
+            },
+            {
+              "miles": 178.044,
+              "dc_kwh": 47.2918,
+              "reported_kwh_per_100mi": 26.562,
+              "kind": "constant_speed"
+            },
+            {
+              "miles": 7.456,
+              "dc_kwh": 1.2335,
+              "reported_kwh_per_100mi": 16.693,
+              "kind": "udds"
+            },
+            {
+              "miles": 10.258,
+              "dc_kwh": 2.0574,
+              "reported_kwh_per_100mi": 20.057,
+              "kind": "hwfet"
+            },
+            {
+              "miles": 7.406,
+              "dc_kwh": 1.2363,
+              "reported_kwh_per_100mi": 16.693,
+              "kind": "udds"
+            },
+            {
+              "miles": 39.536,
+              "dc_kwh": 10.5012,
+              "reported_kwh_per_100mi": 26.561,
+              "kind": "constant_speed"
+            }
+          ],
+          "dc_wh_per_km": {
+            "udds": 105.07,
+            "hwfet": 126.88
+          },
+          "charging_efficiency": 0.8902
+        }
+      ]
+    },
+    {
+      "id": "polestar-2-lr-sm",
+      "report": {
+        "publisher": "US Environmental Protection Agency",
+        "title": "Certificate Summary Information Report",
+        "test_group": "SVVXV00.0Z0B",
+        "certificate": "SVVXV00.0Z0B-003",
+        "issued": "04/25/2024",
+        "revision_submitted": "02/05/2024 08:24:51 AM",
+        "model_year": 2025,
+        "docid": 60467,
+        "url": "https://dis.epa.gov/otaqpub/display_file.jsp?docid=60467&flag=1",
+        "file": "epa_cert_SVVXV00.0Z0B_60467.pdf",
+        "sha256": "ce442301f3b615f029719077af232a9a9577dbc5d1d57314018d6ce48991a4ec"
+      },
+      "label": "19 inch wheels",
+      "test_vehicle": {
+        "test_vehicle_id": "202506",
+        "configuration": 0,
+        "curb_weight_lb": 4544.0,
+        "equivalent_test_weight_lb": 4750.0,
+        "target_coefficients": {
+          "A_lbf": 35.69,
+          "B_lbf_per_mph": 0.1104,
+          "C_lbf_per_mph2": 0.01673
+        }
+      },
+      "tests": [
+        {
+          "number": "SVVX10084256",
+          "procedure": "81 - Charge Depleting UDDS",
+          "date": "01/04/2024",
+          "four_wheel_drive_dynamometer": true
+        },
+        {
+          "number": "SVVX10084257",
+          "procedure": "84 - Charge Depleting Highway",
+          "date": "01/04/2024",
+          "four_wheel_drive_dynamometer": true
+        }
+      ],
+      "usable_battery_energy_wh": 82378.0,
+      "dc_wh_per_mi": {
+        "udds": 171.14,
+        "hwfet": 201.98
+      },
+      "certified_range_mi": {
+        "udds": 481.358,
+        "hwfet": 407.85
+      },
+      "recharge": {
+        "mains_voltage_v": 236.0,
+        "energy_kwh": 92.407
+      },
+      "dc_wh_per_km": {
+        "udds": 106.34,
+        "hwfet": 125.5
+      },
+      "charging_efficiency": 0.8915,
+      "other_configurations": [
+        {
+          "label": "20 inch wheels",
+          "test_vehicle": {
+            "test_vehicle_id": "202506",
+            "configuration": 1,
+            "curb_weight_lb": 4544.0,
+            "equivalent_test_weight_lb": 4750.0,
+            "target_coefficients": {
+              "A_lbf": 39.23,
+              "B_lbf_per_mph": 0.1104,
+              "C_lbf_per_mph2": 0.01673
+            }
+          },
+          "tests": [
+            {
+              "number": "SVVX10084258",
+              "procedure": "81 - Charge Depleting UDDS",
+              "date": "01/11/2024",
+              "four_wheel_drive_dynamometer": true
+            },
+            {
+              "number": "SVVX10084259",
+              "procedure": "84 - Charge Depleting Highway",
+              "date": "01/11/2024",
+              "four_wheel_drive_dynamometer": true
+            }
+          ],
+          "usable_battery_energy_wh": 82827.0,
+          "dc_wh_per_mi": {
+            "udds": 181.33,
+            "hwfet": 210.69
+          },
+          "certified_range_mi": {
+            "udds": 456.783,
+            "hwfet": 393.12
+          },
+          "recharge": {
+            "mains_voltage_v": 236.0,
+            "energy_kwh": 91.874
+          },
+          "dc_wh_per_km": {
+            "udds": 112.67,
+            "hwfet": 130.92
+          },
+          "charging_efficiency": 0.9015
+        }
+      ]
+    },
+    {
+      "id": "vw-id4-pro",
+      "report": {
+        "publisher": "US Environmental Protection Agency",
+        "title": "Certificate Summary Information Report",
+        "test_group": "RVGAV00.0VZR",
+        "certificate": "RVGAV00.0VZR-043",
+        "issued": "10/04/2023",
+        "revision_submitted": "11/29/2023 03:01:54 PM",
+        "model_year": 2024,
+        "docid": 59583,
+        "url": "https://dis.epa.gov/otaqpub/display_file.jsp?docid=59583&flag=1",
+        "file": "epa_cert_RVGAV00.0VZR_59583.pdf",
+        "sha256": "ba306b696357a6559964162de33eda57eccc1b317580ce0cca8c5d83a2976cbb"
+      },
+      "label": "D mode (default drive mode)",
+      "test_vehicle": {
+        "test_vehicle_id": "VW316640473",
+        "configuration": 0,
+        "curb_weight_lb": 4630.0,
+        "equivalent_test_weight_lb": 5000.0,
+        "target_coefficients": {
+          "A_lbf": 27.83,
+          "B_lbf_per_mph": 0.2217,
+          "C_lbf_per_mph2": 0.01799
+        }
+      },
+      "tests": [
+        {
+          "number": "RVGA10082539",
+          "procedure": "81 - Charge Depleting UDDS",
+          "date": "09/08/2023",
+          "four_wheel_drive_dynamometer": false
+        },
+        {
+          "number": "RVGA10082542",
+          "procedure": "84 - Charge Depleting Highway",
+          "date": "09/08/2023",
+          "four_wheel_drive_dynamometer": false
+        }
+      ],
+      "usable_battery_energy_wh": 77411.0,
+      "dc_wh_per_mi": {
+        "udds": 174.6,
+        "hwfet": 205.0
+      },
+      "certified_range_mi": {
+        "udds": 443.27,
+        "hwfet": 377.57
+      },
+      "recharge": {
+        "mains_voltage_v": 240.0,
+        "energy_kwh": 85.869
+      },
+      "dc_wh_per_km": {
+        "udds": 108.49,
+        "hwfet": 127.38
+      },
+      "charging_efficiency": 0.9015,
+      "other_configurations": [
+        {
+          "label": "B mode (stronger regenerative braking)",
+          "test_vehicle": {
+            "test_vehicle_id": "VW316640473",
+            "configuration": 0,
+            "curb_weight_lb": 4630.0,
+            "equivalent_test_weight_lb": 5000.0,
+            "target_coefficients": {
+              "A_lbf": 27.83,
+              "B_lbf_per_mph": 0.2217,
+              "C_lbf_per_mph2": 0.01799
+            }
+          },
+          "tests": [
+            {
+              "number": "RVGA10082538",
+              "procedure": "81 - Charge Depleting UDDS",
+              "date": "09/01/2023",
+              "four_wheel_drive_dynamometer": false
+            },
+            {
+              "number": "RVGA10082541",
+              "procedure": "84 - Charge Depleting Highway",
+              "date": "09/01/2023",
+              "four_wheel_drive_dynamometer": false
+            }
+          ],
+          "usable_battery_energy_wh": 77272.0,
+          "dc_wh_per_mi": {
+            "udds": 171.8,
+            "hwfet": 204.8
+          },
+          "certified_range_mi": {
+            "udds": 449.74,
+            "hwfet": 377.25
+          },
+          "recharge": {
+            "mains_voltage_v": 240.0,
+            "energy_kwh": 86.119
+          },
+          "dc_wh_per_km": {
+            "udds": 106.75,
+            "hwfet": 127.26
+          },
+          "charging_efficiency": 0.8973
+        }
+      ]
+    }
+  ]
+}

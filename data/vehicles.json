@@ -1,0 +1,295 @@
+{
+  "about": "Official regulatory data for the EV range simulator: EU WLTP registrations and US EPA measured road load. Manufacturer figures are kept separately in data/manufacturer_facts.json. See docs/data-sources.md.",
+  "sources": {
+    "eu_wltp": {
+      "publisher": "European Environment Agency",
+      "dataset": "Monitoring of CO2 emissions from passenger cars, 2024 final data (Regulation (EU) 2019/631)",
+      "access": "https://discodata.eea.europa.eu/ table [CO2Emission].[latest].[co2cars_2024Fv30]",
+      "doi": "https://doi.org/10.2909/5018ec17-2348-4c92-8761-6f2377bbd1c0",
+      "licence": "CC BY 4.0; copyright holder: Directorate-General for Climate Action (DG CLIMA)",
+      "field_definitions": "EEA table definition: M = mass in running order, Mt = WLTP test mass, Z = electric energy consumption (Wh/km), Zr = electric range (km), R = registrations",
+      "tool": "tools/eea_query.py"
+    },
+    "us_road_load": {
+      "publisher": "US Environmental Protection Agency",
+      "dataset": "Test Car List Data Files",
+      "page": "https://www.epa.gov/compliance-and-fuel-economy-data/data-cars-used-testing-fuel-economy",
+      "reference_conditions": "20 C, 98.21 kPa, no wind (40 CFR 1066.305)",
+      "conversions": "1 lbf = 4.4482216152605 N, 1 mph = 0.44704 m/s, 1 lb = 0.45359237 kg (exact; NIST SP 811)",
+      "tool": "tools/epa_roadload.py"
+    }
+  },
+  "vehicles": [
+    {
+      "id": "tesla-model3-rwd",
+      "name": "Tesla Model 3 RWD",
+      "eu_wltp": {
+        "variant": "type 003, variant H6LR (2024 registrations)",
+        "query": "Mk LIKE 'TESLA%' AND Cn LIKE '%MODEL 3%' AND Va = 'H6LR'",
+        "registrations": 56229,
+        "registrations_with_all_fields": 45809,
+        "registrations_with_mode_values": 45736,
+        "mass_in_running_order_kg": {
+          "mode": 1836,
+          "p05": 1836.0,
+          "p95": 1836.0
+        },
+        "wltp_test_mass_kg": {
+          "mode": 1932,
+          "p05": 1932.0,
+          "p95": 1932.0
+        },
+        "energy_consumption_wh_per_km": {
+          "mode": 132,
+          "p05": 132.0,
+          "p95": 132.0
+        },
+        "electric_range_km": {
+          "mode": 513,
+          "p05": 513.0,
+          "p95": 513.0
+        },
+        "motor_power_kw": {
+          "mode": 208,
+          "share_of_registrations_reporting_power": 0.9653
+        }
+      },
+      "us_road_load": {
+        "file": "24-testcar-2025-05.xlsx",
+        "url": "https://www.epa.gov/system/files/documents/2025-05/24-testcar-2025-05.xlsx",
+        "sha256": "e3a5378fa5e6820861d705e36fd2f2046234be8d050026bcfde29f0b8e63a6f9",
+        "model_year": 2024,
+        "model": "Model 3 RWD",
+        "test_vehicle_id": "3R124-649670",
+        "target_coefficients": {
+          "A_lbf": 27.02,
+          "B_lbf_per_mph": 0.2873,
+          "C_lbf_per_mph2": 0.0122
+        },
+        "equivalent_test_weight_lb": 4250.0,
+        "si": {
+          "F0_N": 120.1909,
+          "F1_N_per_m_per_s": 2.85875,
+          "F2_N_per_m2_per_s2": 0.271552,
+          "equivalent_test_weight_kg": 1927.77
+        }
+      },
+      "notes": [
+        "Tesla declares a single WLTP value for the whole variant: 45,736 of the 45,809 complete records carry exactly the same mass, consumption and range.",
+        "EPA lists the drive system of this record as '4-Wheel Drive'; the model name and the test vehicle ID (3R1..) identify the single-motor rear-wheel-drive car. The drive field is not used anywhere in the model."
+      ]
+    },
+    {
+      "id": "volvo-ex30-sm-er",
+      "name": "Volvo EX30 Single Motor Extended Range",
+      "eu_wltp": {
+        "variant": "type 2, variant 2ZEL (2024 registrations)",
+        "query": "Mk LIKE 'VOLVO%' AND Cn LIKE '%EX30%' AND Va = '2ZEL'",
+        "registrations": 40130,
+        "registrations_with_all_fields": 40128,
+        "registrations_with_mode_values": 17574,
+        "mass_in_running_order_kg": {
+          "mode": 1850,
+          "p05": 1850.0,
+          "p95": 1850.0
+        },
+        "wltp_test_mass_kg": {
+          "mode": 1920,
+          "p05": 1920.0,
+          "p95": 1943.0
+        },
+        "energy_consumption_wh_per_km": {
+          "mode": 170,
+          "p05": 170.0,
+          "p95": 171.0
+        },
+        "electric_range_km": {
+          "mode": 476,
+          "p05": 473.0,
+          "p95": 476.0
+        },
+        "motor_power_kw": {
+          "mode": 200,
+          "share_of_registrations_reporting_power": 1.0
+        }
+      },
+      "us_road_load": {
+        "file": "25-testcar-2026-01-21.xlsx",
+        "url": "https://www.epa.gov/system/files/documents/2026-01/25-testcar-2026-01-21.xlsx",
+        "sha256": "f131cbb353d0737874e9d61215ba8055b47e4df845f34072bf77faaf780e9dbc",
+        "model_year": 2025,
+        "model": "EX30 Single Motor extended range",
+        "test_vehicle_id": "202532",
+        "target_coefficients": {
+          "A_lbf": 33.2,
+          "B_lbf_per_mph": -0.0857,
+          "C_lbf_per_mph2": 0.02006
+        },
+        "equivalent_test_weight_lb": 4250.0,
+        "si": {
+          "F0_N": 147.681,
+          "F1_N_per_m_per_s": -0.85275,
+          "F2_N_per_m2_per_s2": 0.446503,
+          "equivalent_test_weight_kg": 1927.77
+        }
+      },
+      "notes": [
+        "EPA also lists an 18-inch-wheel version of the same test vehicle, with a higher constant and quadratic term (A = 33.96 lbf, C = 0.02022 lbf/mph^2). The record for the 19- and 20-inch wheels is used; the other serves as a check.",
+        "EPA lists the drive system as 'All Wheel Drive'; the model name states a single motor. The drive field is not used anywhere in the model."
+      ]
+    },
+    {
+      "id": "polestar-2-lr-sm",
+      "name": "Polestar 2 Long Range Single Motor",
+      "eu_wltp": {
+        "variant": "type V, variant VSFE (2024 registrations)",
+        "query": "Mk LIKE 'POLESTAR%' AND Va = 'VSFE'",
+        "registrations": 6323,
+        "registrations_with_all_fields": 6323,
+        "registrations_with_mode_values": 1195,
+        "mass_in_running_order_kg": {
+          "mode": 2084,
+          "p05": 2084.0,
+          "p95": 2084.0
+        },
+        "wltp_test_mass_kg": {
+          "mode": 2208,
+          "p05": 2175.0,
+          "p95": 2216.0
+        },
+        "energy_consumption_wh_per_km": {
+          "mode": 152,
+          "p05": 150.0,
+          "p95": 157.0
+        },
+        "electric_range_km": {
+          "mode": 641,
+          "p05": 616.0,
+          "p95": 649.0
+        },
+        "motor_power_kw": {
+          "mode": 220,
+          "share_of_registrations_reporting_power": 1.0
+        }
+      },
+      "us_road_load": {
+        "file": "25-testcar-2026-01-21.xlsx",
+        "url": "https://www.epa.gov/system/files/documents/2026-01/25-testcar-2026-01-21.xlsx",
+        "sha256": "f131cbb353d0737874e9d61215ba8055b47e4df845f34072bf77faaf780e9dbc",
+        "model_year": 2025,
+        "model": "Polestar 2 Single Motor (19 Inch Wheels)",
+        "test_vehicle_id": "202506",
+        "target_coefficients": {
+          "A_lbf": 35.69,
+          "B_lbf_per_mph": 0.1104,
+          "C_lbf_per_mph2": 0.01673
+        },
+        "equivalent_test_weight_lb": 4750.0,
+        "si": {
+          "F0_N": 158.757,
+          "F1_N_per_m_per_s": 1.09852,
+          "F2_N_per_m2_per_s2": 0.372383,
+          "equivalent_test_weight_kg": 2154.56
+        }
+      },
+      "notes": [
+        "EPA also lists a 20-inch-wheel version (A = 39.23 lbf, same B and C). The 19-inch record is used; the other serves as a check.",
+        "EPA lists the drive system as 'All Wheel Drive'; the model name states a single motor. The drive field is not used anywhere in the model."
+      ]
+    },
+    {
+      "id": "vw-id4-pro",
+      "name": "Volkswagen ID.4 Pro (210 kW, RWD)",
+      "eu_wltp": {
+        "variant": "type E2, variant 4ACEDFAD7PX2, 'ID.4 PRO 210KW' without 4MOTION (2024 registrations)",
+        "query": "Mk LIKE 'VOLKSWAGEN%' AND Va = '4ACEDFAD7PX2' AND Cn LIKE 'ID.4 PRO 210%' AND Cn NOT LIKE '%4MOTION%'",
+        "registrations": 26250,
+        "registrations_with_all_fields": 25754,
+        "registrations_with_mode_values": 753,
+        "mass_in_running_order_kg": {
+          "mode": 2156,
+          "p05": 2149.0,
+          "p95": 2156.0
+        },
+        "wltp_test_mass_kg": {
+          "mode": 2285,
+          "p05": 2253.0,
+          "p95": 2324.0
+        },
+        "energy_consumption_wh_per_km": {
+          "mode": 163,
+          "p05": 161.0,
+          "p95": 171.0
+        },
+        "electric_range_km": {
+          "mode": 542,
+          "p05": 521.0,
+          "p95": 562.0
+        },
+        "motor_power_kw": {
+          "mode": 210,
+          "share_of_registrations_reporting_power": 0.725
+        }
+      },
+      "us_road_load": {
+        "file": "24-testcar-2025-05.xlsx",
+        "url": "https://www.epa.gov/system/files/documents/2025-05/24-testcar-2025-05.xlsx",
+        "sha256": "e3a5378fa5e6820861d705e36fd2f2046234be8d050026bcfde29f0b8e63a6f9",
+        "model_year": 2024,
+        "model": "ID.4 Pro",
+        "test_vehicle_id": "VW316640473",
+        "target_coefficients": {
+          "A_lbf": 27.83,
+          "B_lbf_per_mph": 0.2217,
+          "C_lbf_per_mph2": 0.01799
+        },
+        "equivalent_test_weight_lb": 5000.0,
+        "si": {
+          "F0_N": 123.794,
+          "F1_N_per_m_per_s": 2.206,
+          "F2_N_per_m2_per_s2": 0.400428,
+          "equivalent_test_weight_kg": 2267.96
+        }
+      },
+      "notes": []
+    }
+  ],
+  "considered_but_not_used": [
+    {
+      "id": "vw-id3-pro",
+      "name": "Volkswagen ID.3 Pro (150 kW)",
+      "status": "not used: the ID.3 is not sold in the United States, so no measured road load exists in the EPA data. Kept here only to document the decision.",
+      "eu_wltp": {
+        "variant": "type E1, variant ACEBJCL1FX2, version C051AA (2024 registrations)",
+        "query": "Mk LIKE 'VOLKSWAGEN%' AND Va = 'ACEBJCL1FX2' AND Ve = 'C051AA'",
+        "registrations": 20497,
+        "registrations_with_all_fields": 18716,
+        "registrations_with_mode_values": 3053,
+        "mass_in_running_order_kg": {
+          "mode": 1821,
+          "p05": 1815.0,
+          "p95": 1821.0
+        },
+        "wltp_test_mass_kg": {
+          "mode": 1911,
+          "p05": 1895.0,
+          "p95": 1952.0
+        },
+        "energy_consumption_wh_per_km": {
+          "mode": 150,
+          "p05": 149.0,
+          "p95": 155.0
+        },
+        "electric_range_km": {
+          "mode": 432,
+          "p05": 420.0,
+          "p95": 435.0
+        },
+        "motor_power_kw": {
+          "mode": 150,
+          "share_of_registrations_reporting_power": 0.9824
+        }
+      }
+    }
+  ]
+}

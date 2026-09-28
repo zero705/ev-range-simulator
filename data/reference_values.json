@@ -1,0 +1,602 @@
+{
+  "about": "Values from official and peer-reviewed sources: the regulatory definitions behind the model's constants (tests/test_constants.py ties each constant to its quote), the auxiliary load (the only model input not measured on the cars themselves), the climate-control powers shown for orientation, and values that cross-check the EPA certificates (data/epa_certification.json). Each value carries a verbatim quote from its source, or the spreadsheet cell it was read from; tools/verify_references.py checks every one against the fingerprinted document. Download the documents into data/sources/ to re-run the check.",
+  "documents": {
+    "eea-metadata-2024": {
+      "title": "Monitoring of CO2 emissions from passenger cars, 2024 - Final (metadata record, ISO 19115-3)",
+      "publisher": "European Environment Agency, Spatial Data Infrastructure catalogue",
+      "doi": "10.2909/5018ec17-2348-4c92-8761-6f2377bbd1c0",
+      "url": "https://sdi.eea.europa.eu/catalogue/srv/api/records/5018ec17-2348-4c92-8761-6f2377bbd1c0/formatters/xml",
+      "file": "eea_metadata_co2cars_2024_final.xml",
+      "sha256": "6880a6cc748ca3da2e763183a85f579fec943b98f71101dcd29501db32461c3e",
+      "note": "Retrieved 27 September 2026; the record is updated by the EEA, so a later download may differ."
+    },
+    "eea-table-definition-2024": {
+      "title": "Monitoring of CO2 emissions from passenger cars, 2024 - Final data: Table definition",
+      "publisher": "European Environment Agency (attachment 'Table definition' of the metadata record above)",
+      "url": "https://sdi.eea.europa.eu/catalogue/api/records/5018ec17-2348-4c92-8761-6f2377bbd1c0/attachments/Table-definition-cars-2024-Final.xlsx",
+      "file": "eea_table_definition_cars_2024_final.xlsx",
+      "sha256": "8c70451bbd47b31f063dcace945fab91fc0f96d0eaed3155cdc450ae6623a3a7",
+      "note": "Retrieved 27 September 2026."
+    },
+    "gtr15": {
+      "title": "UN Global Technical Regulation No. 15, Worldwide harmonized Light vehicles Test Procedure, ECE/TRANS/180/Add.15, 12 May 2014",
+      "publisher": "United Nations Economic Commission for Europe (copy hosted by TransportPolicy.net; unece.org blocks automated downloads)",
+      "url": "https://www.transportpolicy.net/wp-content/uploads/2021/08/GTR-No-15.pdf",
+      "file": "unece_gtr15_ece-trans-180-add15_2014-05-12.pdf",
+      "sha256": "2b15775dfc03b1692661ea60e528ac8b9937c189f88674933c190400264c82a1"
+    },
+    "eu-2017-1151": {
+      "title": "Commission Regulation (EU) 2017/1151 of 1 June 2017 (the EU implementation of the WLTP), Official Journal of the European Union L 175, 7 July 2017",
+      "publisher": "Publications Office of the European Union, CELEX 32017R1151",
+      "url": "https://publications.europa.eu/resource/celex/32017R1151",
+      "file": "eu_2017-1151_oj-l175_2017-07-07.xhtml",
+      "sha256": "46244be1b0096bfd73d84d6f67eaf1d16e88ce899d9cb3a7a92af061669f35cb",
+      "note": "Requested with the headers 'Accept: application/xhtml+xml' and 'Accept-Language: eng'; the Publications Office then serves the Official Journal text as published, through a redirect to an http:// address, so the fingerprint, not the transport, vouches for the content. eur-lex.europa.eu blocks automated downloads."
+    },
+    "ecfr-600.116-12": {
+      "title": "40 CFR 600.116-12, Special procedures related to electric vehicles and hybrid electric vehicles (eCFR, point-in-time text of 1 September 2026)",
+      "publisher": "Office of the Federal Register, eCFR",
+      "url": "https://www.ecfr.gov/api/versioner/v1/full/2026-09-01/title-40.xml?part=600&section=600.116-12",
+      "file": "ecfr_40cfr600.116-12_2026-09-01.xml",
+      "sha256": "8683a24e9701c02d9ee7983cfda912403c97087d9a56f8b8f43017348c9154e7"
+    },
+    "ecfr-1066.305": {
+      "title": "40 CFR 1066.305, Procedures for specifying road-load forces for motor vehicles at or below 14,000 pounds GVWR (eCFR, point-in-time text of 1 September 2026)",
+      "publisher": "Office of the Federal Register, eCFR",
+      "url": "https://www.ecfr.gov/api/versioner/v1/full/2026-09-01/title-40.xml?part=1066&section=1066.305",
+      "file": "ecfr_40cfr1066.305_2026-09-01.xml",
+      "sha256": "56f0e1dd4d66544e54159c82f413b95dd1658e5bb09e71d496ae21e0772a9814"
+    },
+    "ecfr-86.129-00": {
+      "title": "40 CFR 86.129-00, Road load power, test weight, and inertia weight class determination (eCFR, point-in-time text of 1 September 2026)",
+      "publisher": "Office of the Federal Register, eCFR",
+      "url": "https://www.ecfr.gov/api/versioner/v1/full/2026-09-01/title-40.xml?part=86&section=86.129-00",
+      "file": "ecfr_40cfr86.129-00_2026-09-01.xml",
+      "sha256": "f58af3d12c5a36746b31547939d66d3d330ec94e5767c2c19b5cb3eecdd2d702"
+    },
+    "nist-sp811-2008": {
+      "title": "A. Thompson and B. N. Taylor, Guide for the Use of the International System of Units (SI), NIST Special Publication 811, 2008 edition, Appendix B",
+      "publisher": "National Institute of Standards and Technology",
+      "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication811e2008.pdf",
+      "file": "nist_sp811_2008.pdf",
+      "sha256": "788dd8f0bcb0ec06e40c300690266742532a7e760a93be57764b77ed0ef3482f",
+      "note": "Retrieved 27 September 2026."
+    },
+    "doe-program-record-2024": {
+      "title": "Program Record (Vehicle Technologies Office): Impact of Cold Ambient Temperature and Extreme Conditions on Electric Vehicles, 12 September 2024, Table 2",
+      "publisher": "US Department of Energy, Vehicle Technologies Office, with Argonne National Laboratory (independent reviewers from Idaho and Oak Ridge National Laboratories)",
+      "url": "https://www.energy.gov/sites/default/files/2024-10/Impact_of_Cold_Ambient_Temperature_on_BEV_Performance_v15_TechEditFinal_12Sep2024__0.pdf",
+      "file": "doe_program_record_cold_ambient_bev_2024-09-12.pdf",
+      "sha256": "8f3c28cfe8917f6f51caebfc40abc7e7d1b6263531b655862d12887728281595",
+      "note": "Table 2 was measured at Argonne's Advanced Mobility Technology Laboratory on stationary cars holding a 72 F cabin. Columns per car: usable battery energy, HVAC power, other power, runtime. The two battery electric cars are not named."
+    },
+    "doe-fueleconomy-evtech": {
+      "title": "All-Electric Vehicles, fueleconomy.gov (data sources note on the page)",
+      "publisher": "US Department of Energy and US Environmental Protection Agency",
+      "url": "https://www.fueleconomy.gov/feg/evtech.shtml",
+      "file": "doe_fueleconomy_evtech.html",
+      "sha256": "91147721d2dd06042e05a3d331def1c445923e5116031b516484f34e30045054",
+      "note": "Retrieved 26 September 2026."
+    },
+    "dtu-readme": {
+      "title": "Experimental validation of onboard electric vehicle chargers to improve the efficiency of smart charging operation - dataset, Readme.txt",
+      "publisher": "Technical University of Denmark (DTU Data), CC BY 4.0",
+      "doi": "10.11583/DTU.25425262.v1",
+      "url": "https://ndownloader.figshare.com/files/45095290",
+      "file": "dtu_sevdari2023_readme.txt",
+      "sha256": "4dac70dc86d44ae6ed3263cffc02b2e042f9cf306c43051f9966c41e66c2c6d0",
+      "md5_published_by_repository": "f574d4d960a1997463a7b2c674fb0e2a"
+    },
+    "dtu-efficiency": {
+      "title": "Same dataset, Efficiency_3phase_data.xlsx (sheet Ark1)",
+      "publisher": "Technical University of Denmark (DTU Data), CC BY 4.0",
+      "doi": "10.11583/DTU.25425262.v1",
+      "url": "https://ndownloader.figshare.com/files/45095242",
+      "file": "dtu_sevdari2023_efficiency_3phase_data.xlsx",
+      "sha256": "38d777c24415cc26bbb394ef5d93673d572c26262202906d0eb26bed8b1a5ebd",
+      "md5_published_by_repository": "ba2079b342f98afecac8f8b218543aea",
+      "paper": "K. Sevdari, L. Calearo, B. H. Bakken, P. B. Andersen, M. Marinelli, Experimental validation of onboard electric vehicle chargers to improve the efficiency of smart charging operation, Sustainable Energy Technologies and Assessments 60 (2023) 103512, https://doi.org/10.1016/j.seta.2023.103512"
+    },
+    "reick-2021": {
+      "title": "B. Reick, A. Konzept, A. Kaufmann, R. Stetter, D. Engelmann, Influence of Charging Losses on Energy Consumption and CO2 Emissions of Battery-Electric Vehicles, Vehicles 3 (2021) 736-748 (peer reviewed, CC BY 4.0)",
+      "publisher": "MDPI",
+      "doi": "10.3390/vehicles3040043",
+      "url": "https://www.mdpi.com/2624-8921/3/4/43/pdf",
+      "archive_url": "https://web.archive.org/web/2024id_/https://www.mdpi.com/2624-8921/3/4/43/pdf",
+      "file": "reick2021_vehicles_3_43.pdf",
+      "sha256": "f14db25c9c81753989c0553ac3e589ed90ae605c958e2264793583b924cf6b33"
+    },
+    "rosenberger-2024": {
+      "title": "N. Rosenberger et al., Quantifying the State of the Art of Electric Powertrains in Battery Electric Vehicles: Comprehensive Analysis of the Tesla Model 3 on the Vehicle Level, World Electric Vehicle Journal 15 (2024) 268 (peer reviewed, CC BY 4.0)",
+      "publisher": "MDPI",
+      "doi": "10.3390/wevj15060268",
+      "url": "https://www.mdpi.com/2032-6653/15/6/268/pdf",
+      "archive_url": "https://web.archive.org/web/2025id_/https://www.mdpi.com/2032-6653/15/6/268/pdf",
+      "file": "rosenberger2024_wevj_15_268.pdf",
+      "sha256": "e8aeb644cb0579fd40c02ed21b6c187f71c2ff260c7c8fdaf5fc221aabf67987",
+      "note": "Test car: Tesla Model 3 Standard Range Plus, 2020, LFP cells, rear-wheel drive."
+    }
+  },
+  "values": {
+    "eu_dataset": [
+      {
+        "item": "licence",
+        "value": "CC-BY 4.0",
+        "doc": "eea-metadata-2024",
+        "quote": "License CC-BY 4.0 (https://creativecommons.org/licenses/by/4.0/). Copyright holder: Directorate-General for Climate Action (DG-CLIMA)."
+      },
+      {
+        "item": "table_queried",
+        "value": "[CO2Emission].[latest].[co2cars_2024Fv30]",
+        "doc": "eea-metadata-2024",
+        "quote": "REST SQL Rest Endpoint ([CO2Emission].[latest].[co2cars_2024Fv30])"
+      },
+      {
+        "item": "dataset_title",
+        "value": "2024 - Final",
+        "doc": "eea-metadata-2024",
+        "quote": "Monitoring of CO2 emissions from passenger cars, 2024 - Final"
+      },
+      {
+        "item": "field_M",
+        "value": "Mass in running order",
+        "doc": "eea-table-definition-2024",
+        "quote": "M (kg) Mass in running order Completed/complete vehicle"
+      },
+      {
+        "item": "field_Mt",
+        "value": "WLTP test mass",
+        "doc": "eea-table-definition-2024",
+        "quote": "Mt WLTP test mass."
+      },
+      {
+        "item": "field_Z",
+        "value": "Electric energy consumption",
+        "doc": "eea-table-definition-2024",
+        "quote": "Z (Wh/km) Electric energy consumption."
+      },
+      {
+        "item": "field_Zr",
+        "value": "Electric range",
+        "doc": "eea-table-definition-2024",
+        "quote": "Zr Electric range."
+      },
+      {
+        "item": "field_R",
+        "value": "Total new registrations",
+        "doc": "eea-table-definition-2024",
+        "quote": "R Total new registrations."
+      },
+      {
+        "item": "field_Ep",
+        "value": "Engine power",
+        "doc": "eea-table-definition-2024",
+        "quote": "Ep (KW) Engine power."
+      },
+      {
+        "item": "field_RLFI",
+        "value": "Roadload family’s identifier",
+        "doc": "eea-table-definition-2024",
+        "quote": "RLFI Roadload family’s identifier or Roadload Matrix family’s identifier"
+      }
+    ],
+    "wltp_definitions": [
+      {
+        "item": "reference_pressure",
+        "value": "100 kPa",
+        "doc": "gtr15",
+        "quote": "Atmospheric pressure: p0= 100 kPa, unless otherwise specified by regulations",
+        "context": "para. 3.2.9 (a), reference atmospheric conditions for road load"
+      },
+      {
+        "item": "reference_temperature",
+        "value": "293 K",
+        "doc": "gtr15",
+        "quote": "Atmospheric temperature: T0= 293 K, unless otherwise specified by regulations",
+        "context": "para. 3.2.9 (b)"
+      },
+      {
+        "item": "reference_air_density",
+        "value": "1,189 kg/m3",
+        "doc": "gtr15",
+        "quote": "Dry air density: ρ 0= 1,189 kg/m3, unless otherwise specified by regulations",
+        "context": "para. 3.2.9 (c); the regulation writes the decimal separator as a comma"
+      },
+      {
+        "item": "mass_in_running_order",
+        "value": "including the mass of the driver",
+        "doc": "gtr15",
+        "quote": "means the mass of the vehicle, with its fuel tank(s) filled to at least 90 per cent of its or their capacity/capacities, including the mass of the driver and liquids",
+        "context": "para. 3.2.5, definition of the mass in running order"
+      },
+      {
+        "item": "driver_mass",
+        "value": "75 kg",
+        "doc": "gtr15",
+        "quote": "a mass rated at 75 kg located at the driver",
+        "context": "para. 3.2.6, mass of the driver"
+      },
+      {
+        "item": "test_mass",
+        "value": "25 kg",
+        "doc": "gtr15",
+        "quote": "shall be the sum of the mass in running order, the mass of the optional equipment of vehicle H, 25 kg, and the mass representative of the vehicle load",
+        "context": "Annex 4, para. 4.2.1.3.1, test mass of vehicle H"
+      },
+      {
+        "item": "test_mass_vehicle_load",
+        "value": "15 per cent for category 1 vehicles",
+        "doc": "gtr15",
+        "quote": "The mass representative of the vehicle load shall be 15 per cent for category 1 vehicles",
+        "context": "Annex 4, para. 4.2.1.3.1"
+      },
+      {
+        "item": "rotating_mass_estimate",
+        "value": "three per cent of the mass in running order plus 25 kg",
+        "doc": "gtr15",
+        "quote": "Alternatively, may be estimated to be three per cent of the mass in running order plus 25 kg for the vehicle family.",
+        "context": "Annex 4, para. 4.3.1.4.5; the wording can be read two ways, see the next item"
+      },
+      {
+        "item": "rotating_mass_estimate_eu",
+        "value": "3 per cent of the sum of the mass in running order and 25 kg",
+        "doc": "eu-2017-1151",
+        "quote": "Alternatively, m r may be estimated to be 3 per cent of the sum of the mass in running order and 25 kg.",
+        "context": "Annex XXI, Sub-Annex 4, para. 2.5.1: the EU text of the same rule, which states the reading the model uses"
+      },
+      {
+        "item": "pev_consumption_definition",
+        "value": "including charging losses",
+        "doc": "gtr15",
+        "quote": "The electric energy consumption EC including charging losses is defined by the equation",
+        "context": "Annex 8, para. 4.3.2.2; the equation itself is printed as an image and reads EC = EAC/AER"
+      },
+      {
+        "item": "pev_consumption_terms",
+        "value": "recharged electric energy from the mains",
+        "doc": "gtr15",
+        "quote": "is the recharged electric energy from the mains, Wh; is the all-electric range as defined in paragraph 4.4.2.1. of this annex",
+        "context": "Annex 8, para. 4.3.2.2: EAC and AER"
+      },
+      {
+        "item": "auxiliaries_definition",
+        "value": "not required for vehicle operation",
+        "doc": "gtr15",
+        "quote": "means additional equipment and/or devices not required for vehicle operation.",
+        "context": "para. 3.5.1, definition of auxiliaries"
+      },
+      {
+        "item": "auxiliaries_off",
+        "value": "switched off or deactivated",
+        "doc": "gtr15",
+        "quote": "Auxiliaries shall be switched off or deactivated during dynamometer operation.",
+        "context": "Annex 6, para. 1.2.4.2.2"
+      }
+    ],
+    "unit_conversions": [
+      {
+        "item": "exact_factors",
+        "value": "exact",
+        "doc": "nist-sp811-2008",
+        "quote": "A factor in boldface is exact.",
+        "context": "Appendix B.8 and B.9; the mile and the mile per hour are printed in boldface"
+      },
+      {
+        "item": "mile",
+        "value": "1.609 344 E+03",
+        "doc": "nist-sp811-2008",
+        "quote": "mile (mi) meter (m) 1.609 344 E+03",
+        "context": "Appendix B.8"
+      },
+      {
+        "item": "mile_per_hour",
+        "value": "4.4704 E−01",
+        "doc": "nist-sp811-2008",
+        "quote": "mile per hour (mi / h) meter per second (m / s) 4.4704 E−01",
+        "context": "Appendix B.8"
+      },
+      {
+        "item": "pound",
+        "value": "4.535 923 7 E −01",
+        "doc": "nist-sp811-2008",
+        "quote": "The exact conversion factor is 4.535 923 7 E −01. All units in Secs. B.8 and B.9 that contain the pound refer to the avoirdupois pound.",
+        "context": "Appendix B, footnote 22 (pound to kilogram)"
+      },
+      {
+        "item": "pound_force",
+        "value": "4.448 221 615 260 5 E+00",
+        "doc": "nist-sp811-2008",
+        "quote": "The exact conversion factor is 4.448 221 615 260 5 E+00 since the standard value of the acceleration due to gravity, gn = 9.806 65 m/s2 exactly, is used to define the kilogram-force",
+        "context": "Appendix B, footnote 23 (pound-force to newton)"
+      },
+      {
+        "item": "standard_gravity",
+        "value": "9.806 65 m/s2",
+        "doc": "nist-sp811-2008",
+        "quote": "The exact conversion factor is 4.448 221 615 260 5 E+00 since the standard value of the acceleration due to gravity, gn = 9.806 65 m/s2 exactly, is used to define the kilogram-force",
+        "context": "Appendix B, footnote 23"
+      }
+    ],
+    "drive_cycles": [
+      {
+        "item": "low_phase_duration",
+        "value": "589 seconds",
+        "doc": "gtr15",
+        "quote": "All low speed phases last 589 seconds (s).",
+        "context": "Annex 1, para. 3.4.1"
+      },
+      {
+        "item": "medium_phase_duration",
+        "value": "433 seconds",
+        "doc": "gtr15",
+        "quote": "All medium speed phases last 433 seconds (s).",
+        "context": "Annex 1, para. 3.4.2"
+      },
+      {
+        "item": "high_phase_duration",
+        "value": "455 seconds",
+        "doc": "gtr15",
+        "quote": "All high speed phases last 455 seconds (s).",
+        "context": "Annex 1, para. 3.4.3"
+      },
+      {
+        "item": "extra_high_phase_duration",
+        "value": "323 seconds",
+        "doc": "gtr15",
+        "quote": "All extra high speed phases last 323 seconds (s).",
+        "context": "Annex 1, para. 3.4.4"
+      }
+    ],
+    "epa_definitions": [
+      {
+        "item": "road_load_reference_pressure",
+        "value": "98.21 kPa",
+        "doc": "ecfr-1066.305",
+        "quote": "under reference conditions of 20 °C, 98.21 kPa, no wind, no precipitation, and the transmission in neutral"
+      },
+      {
+        "item": "road_load_reference_temperature",
+        "value": "20 °C",
+        "doc": "ecfr-1066.305",
+        "quote": "under reference conditions of 20 °C, 98.21 kPa, no wind, no precipitation, and the transmission in neutral"
+      },
+      {
+        "item": "test_weight_basis",
+        "value": "plus 300 pounds",
+        "doc": "ecfr-86.129-00",
+        "quote": "For light-duty vehicles and light light-duty trucks, test weight basis is loaded vehicle weight, which is the vehicle weight plus 300 pounds.",
+        "context": "para. (f)(1)(i)"
+      },
+      {
+        "item": "equivalent_test_weight_classes",
+        "value": "corresponding equivalent weight",
+        "doc": "ecfr-86.129-00",
+        "quote": "determined by the test vehicles test weight basis and corresponding equivalent weight as listed in the tabular information of § 86.129-94(a)",
+        "context": "para. (f)(1): the equivalent test weight is the weight class of that table"
+      }
+    ],
+    "road_load": [
+      {
+        "item": "rolling_resistance_term",
+        "value": "rolling resistance coefficient",
+        "doc": "rosenberger-2024",
+        "quote": "where m is the vehicle’s test mass, g is the gravitational acceleration, fRR is the rolling resistance coefficient",
+        "context": "Equation (2) of the Tesla study writes rolling resistance as m g fRR"
+      },
+      {
+        "item": "rolling_resistance_in_fitted_terms",
+        "value": "the constant and the velocity-proportional term",
+        "doc": "rosenberger-2024",
+        "quote": "In Equation (3), the rolling resistance is accounted for in the constant and the velocity-proportional term."
+      },
+      {
+        "item": "wltp_road_load_on_certificate_of_conformity",
+        "value": "149.92 N",
+        "doc": "rosenberger-2024",
+        "quote": "load coefficient—f0 c 149.92 N",
+        "context": "Table A1 of the Tesla study; the footnote marks 'c' values as taken from the car's Certificate of Conformity"
+      },
+      {
+        "item": "table_source_note",
+        "value": "Certificate of Conformity",
+        "doc": "rosenberger-2024",
+        "quote": "Data are collected from the Certificate of Conformity (COC) according to EU Regulation 2018/858"
+      }
+    ],
+    "certification_procedure": [
+      {
+        "item": "procedure",
+        "value": "SAE J1634",
+        "doc": "ecfr-600.116-12",
+        "quote": "Determine fuel economy values for electric vehicles as specified in §§ 600.210 and 600.311 using the procedures of SAE J1634"
+      },
+      {
+        "item": "usable_battery_energy_definition",
+        "value": "total DC discharge energy",
+        "doc": "ecfr-600.116-12",
+        "quote": "SAE J1634 Section 3.13 defines useable battery energy (UBE) as the total DC discharge energy (Edc total ), measured in DC watt-hours for a full discharge test."
+      },
+      {
+        "item": "soak_drain_excluded",
+        "value": "not included in the useable battery energy",
+        "doc": "ecfr-600.116-12",
+        "quote": "As key-off soak periods are not considered part of the test phase, the discharge energy that occurs during the key-off soak periods is not included in the useable battery energy."
+      },
+      {
+        "item": "phase_order",
+        "value": "UDDS 1 and HFEDS 1",
+        "doc": "ecfr-600.116-12",
+        "quote": "a 15 second key-on pause is required between UDDS 1 and HFEDS 1 , and UDDS 3 and HFEDS 2 ."
+      },
+      {
+        "item": "constant_speed",
+        "value": "65 mph",
+        "doc": "ecfr-600.116-12",
+        "quote": "Divide the mid-test constant speed cycle distance (d M ) by 65 mph"
+      }
+    ],
+    "auxiliary_load": [
+      {
+        "item": "table_2_measured_by",
+        "value": "ANL AMTL",
+        "doc": "doe-program-record-2024",
+        "quote": "Table 2. BEV and ICEV Stationary Runtime to Maintain 72°F Cabin Temperature at Various Ambient Temperatures (ANL AMTL)",
+        "context": "Argonne National Laboratory, Advanced Mobility Technology Laboratory"
+      },
+      {
+        "item": "independent_reviewers",
+        "value": "Independent Reviewers",
+        "doc": "doe-program-record-2024",
+        "quote": "Independent Reviewers: John Smart (INL), Stacy Davis (ORNL)",
+        "context": "Idaho National Laboratory and Oak Ridge National Laboratory"
+      },
+      {
+        "item": "table_columns",
+        "value": "Other power consumption",
+        "doc": "doe-program-record-2024",
+        "quote": "UBE (A1) HVAC power consumption (B1) Other power consumption (C1) Available operating time (A1)/(B1+C1)"
+      },
+      {
+        "item": "other_power_72F_bev1",
+        "value": "226 W",
+        "doc": "doe-program-record-2024",
+        "quote": "72°F 0.19 gal/h 6.5 kW 81.9 h 0.21 gal/h 7.3 kW 73.6 h 59.2 kWh 0 W 226 W 262h",
+        "context": "BEV 1 (battery energy specification 62 kWh), stationary, HVAC power 0 W"
+      },
+      {
+        "item": "other_power_72F_bev2",
+        "value": "144 W",
+        "doc": "doe-program-record-2024",
+        "quote": "59.2 kWh 0 W 226 W 262h 64.5 kWh 0 W 144 W 447.8 h",
+        "context": "BEV 2 (battery energy specification 66 kWh), stationary, HVAC power 0 W"
+      }
+    ],
+    "climate_power": [
+      {
+        "item": "hvac_definition",
+        "value": "including thermal management of the battery",
+        "doc": "doe-program-record-2024",
+        "quote": "Figure 6 shows HVAC power consumption, including thermal management of the battery, needed to maintain 72°F cabin temperature at both 0°F and 20°F ambient."
+      },
+      {
+        "item": "hvac_0F_bev1",
+        "value": "3376 W",
+        "doc": "doe-program-record-2024",
+        "quote": "0°F - - - - 54.5 kWh 3376 W 390 W 14.5 h 61.6 kWh 3732 W 390 W 15.0 h",
+        "ambient_f": 0
+      },
+      {
+        "item": "hvac_0F_bev2",
+        "value": "3732 W",
+        "doc": "doe-program-record-2024",
+        "quote": "0°F - - - - 54.5 kWh 3376 W 390 W 14.5 h 61.6 kWh 3732 W 390 W 15.0 h",
+        "ambient_f": 0
+      },
+      {
+        "item": "hvac_20F_bev1",
+        "value": "1848 W",
+        "doc": "doe-program-record-2024",
+        "quote": "20°F 0.20 gal/h 6.7 kW 79.5 h 0.22 gal/h 7.8 kW 68.5 h 57.1 kWh 1848 W 479 W 24.5 h 62.7 kWh 2898 W 253 W 19.9 h",
+        "ambient_f": 20
+      },
+      {
+        "item": "hvac_20F_bev2",
+        "value": "2898 W",
+        "doc": "doe-program-record-2024",
+        "quote": "20°F 0.20 gal/h 6.7 kW 79.5 h 0.22 gal/h 7.8 kW 68.5 h 57.1 kWh 1848 W 479 W 24.5 h 62.7 kWh 2898 W 253 W 19.9 h",
+        "ambient_f": 20
+      },
+      {
+        "item": "hvac_95F_bev1",
+        "value": "956 W",
+        "doc": "doe-program-record-2024",
+        "quote": "95°F 0.33 gal/h 11 kW 48.6 h 0.34 gal/h 11.7 kW 45.8 h 59.3 kWh 956 W 544 W 39.5 h 64.2 kWh 755 W 239 W 64.6 h",
+        "ambient_f": 95
+      },
+      {
+        "item": "hvac_95F_bev2",
+        "value": "755 W",
+        "doc": "doe-program-record-2024",
+        "quote": "95°F 0.33 gal/h 11 kW 48.6 h 0.34 gal/h 11.7 kW 45.8 h 59.3 kWh 956 W 544 W 39.5 h 64.2 kWh 755 W 239 W 64.6 h",
+        "ambient_f": 95
+      }
+    ],
+    "charging_efficiency": [
+      {
+        "item": "doe_typical_range",
+        "value": "84% to 93%",
+        "doc": "doe-fueleconomy-evtech",
+        "quote": "Battery charging efficiency can vary, but it is often 84% to 93%"
+      },
+      {
+        "item": "reick_definition",
+        "value": "battery energy",
+        "doc": "reick-2021",
+        "quote": "The charging efficiency is calculated using the battery energy EB as well as the charged energy EC."
+      },
+      {
+        "item": "reick_kia_e_niro_3_phases_16_A",
+        "value": "87.21%",
+        "doc": "reick-2021",
+        "quote": "The best value is achieved by charging with all three phases at a maximum charging current of 16 A. Here, the charging process achieves an efficiency of 87.21%."
+      },
+      {
+        "item": "reick_kia_e_niro_1_phase_10_A",
+        "value": "79.58%",
+        "doc": "reick-2021",
+        "quote": "The lowest efficiency is achieved with a low current of 10 A and single-phase charging. This results in a mean efficiency for the charging of 79.58%."
+      },
+      {
+        "item": "dtu_columns",
+        "value": "6 A to 32 A",
+        "doc": "dtu-readme",
+        "quote": "The coloumns represent the charging current from 6 A to 32 A."
+      },
+      {
+        "item": "dtu_units",
+        "value": "0-100%",
+        "doc": "dtu-readme",
+        "quote": "i) Efficiency file 0-100%"
+      },
+      {
+        "item": "dtu_obc_tesla_model_3_sr_2020_16_A",
+        "value": "91.42",
+        "doc": "dtu-efficiency",
+        "cell": {"row": "Tesla Model 3SR (2020)", "column": 16}
+      },
+      {
+        "item": "dtu_obc_tesla_model_3_sr_2020_6_A",
+        "value": "87.38",
+        "doc": "dtu-efficiency",
+        "cell": {"row": "Tesla Model 3SR (2020)", "column": 6}
+      },
+      {
+        "item": "dtu_obc_vw_id4_pro_2021_16_A",
+        "value": "91.07",
+        "doc": "dtu-efficiency",
+        "cell": {"row": "VW ID4 Pro (2021)", "column": 16}
+      }
+    ],
+    "drivetrain_efficiency": [
+      {
+        "item": "fueleconomy_motor_assumption",
+        "value": "76.4%–80.2%",
+        "doc": "doe-fueleconomy-evtech",
+        "quote": "Electric motor efficiency—including inverter and gear reduction losses—assumed to be 76.4%–80.2%, using estimates from Miller et. al. ( SAE 2011-01-0887 ) and adjusting downward by 4% for parasitic losses.",
+        "context": "an ORNL assumption on the page, considered and not used (docs/data-sources.md, section 8)"
+      },
+      {
+        "item": "tesla_power_unit_definition",
+        "value": "power electronics and electric machine",
+        "doc": "rosenberger-2024",
+        "quote": "The efficiency of the power unit, including the power electronics and electric machine, is calculated using Equation (4)"
+      },
+      {
+        "item": "tesla_power_unit_peak",
+        "value": "97 %",
+        "doc": "rosenberger-2024",
+        "quote": "The maximum efficiency of 97 % in both maps is reached at low torque"
+      }
+    ]
+  }
+}
